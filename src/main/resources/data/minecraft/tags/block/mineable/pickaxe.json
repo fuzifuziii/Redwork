@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "redwork:chute",
+    "redwork:extractor",
+    "redwork:placer",
+    "redwork:breeze_collector",
+    "redwork:filter_chute",
+    "redwork:drill"
+  ]
+}

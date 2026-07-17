@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "blacklist=true": {
+      "model": "redwork:block/filter_chute_blacklist"
+    },
+    "blacklist=false": {
+      "model": "redwork:block/filter_chute"
+    }
+  }
+}

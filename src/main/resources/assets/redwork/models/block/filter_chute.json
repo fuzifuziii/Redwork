@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "redwork:block/chute/chute_body_top",
+    "east": "redwork:block/chute/filter_chute_body_side",
+    "north": "redwork:block/chute/filter_chute_body_side",
+    "particle": "redwork:block/chute/filter_chute_body_side",
+    "south": "redwork:block/chute/filter_chute_body_side",
+    "up": "redwork:block/chute/chute_body_top",
+    "west": "redwork:block/chute/filter_chute_body_side"
+  }
+}

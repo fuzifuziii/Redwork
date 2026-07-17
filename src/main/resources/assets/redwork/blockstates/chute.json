@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "upper=true,powered=true": {
+      "model": "redwork:block/chute_upper_on"
+    },
+    "upper=true,powered=false": {
+      "model": "redwork:block/chute_upper_off"
+    },
+    "upper=false": {
+      "model": "redwork:block/chute_body"
+    }
+  }
+}
