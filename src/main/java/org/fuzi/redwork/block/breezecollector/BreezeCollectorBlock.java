@@ -46,7 +46,7 @@ public class BreezeCollectorBlock extends Block implements BlockHelpProvider {
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.tick(state, level, pos, random);
 
-        boolean hasSignal = org.fuzi.redwork.compat.sable.SableCompat.hasNeighborSignal(level, pos);
+        boolean hasSignal = ModUtils.hasNeighborSignal(level, pos);
         boolean isPowered = state.getValue(POWERED);
 
         if (hasSignal && !isPowered) {

@@ -37,8 +37,6 @@ public class Redwork {
         modEventBus.addListener(this::registerCapabilityProvider);
 
         NeoForge.EVENT_BUS.register(this);
-
-        org.fuzi.redwork.compat.sable.SableCompat.init();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

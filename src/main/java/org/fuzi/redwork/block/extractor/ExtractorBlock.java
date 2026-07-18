@@ -46,7 +46,7 @@ public class ExtractorBlock extends Block implements BlockHelpProvider {
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.tick(state, level, pos, random);
 
-        if (!state.getValue(POWERED) && org.fuzi.redwork.compat.sable.SableCompat.hasNeighborSignal(level, pos)) {
+        if (!state.getValue(POWERED) && ModUtils.hasNeighborSignal(level, pos)) {
             var face = state.getValue(FACING);
             var backFace = state.getValue(FACING).getOpposite();
 

@@ -2,9 +2,22 @@ package org.fuzi.redwork.other;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
 public class ModUtils {
+    public static boolean hasNeighborSignal(Level level, BlockPos pos) {
+        for (Direction dir : Direction.values()) {
+            BlockPos neighborPos = pos.relative(dir);
+            BlockState neighborState = level.getBlockState(neighborPos);
+            if (neighborState.isSignalSource() && neighborState.getSignal(level, neighborPos, dir.getOpposite()) > 0) {
+                return true;
+            }
+        }
+        return level.hasNeighborSignal(pos);
+    }
+
     public static Vec3 direction2vec(Direction direction) {
         return switch (direction) {
             case EAST -> new Vec3(1, 0, 0);
