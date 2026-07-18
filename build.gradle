@@ -115,7 +115,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 
 dependencies {
-    // Sable Companion — не требует чтобы sable вообще был установлен на клиенте/сервере,
+    // Sable
     jarJar(api("dev.ryanhcode.sable-companion:sable-companion-common-${project.minecraft_version}:[${project.sable_companion_version},)")) {
         version {
             prefer(project.sable_companion_version)
