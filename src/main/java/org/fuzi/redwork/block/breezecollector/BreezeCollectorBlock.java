@@ -28,7 +28,9 @@ import org.fuzi.redwork.other.ModUtils;
 import java.util.List;
 
 public class BreezeCollectorBlock extends Block implements BlockHelpProvider {
-    private static final int AABB_SIDE = 4;
+    // Collection reach in the facing direction is 2 * AABB_SIDE (AABB_SIDE from the inflate()
+    // call, plus another AABB_SIDE from the forward move()). AABB_SIDE = 2 -> 4 block reach.
+    private static final int AABB_SIDE = 2;
 
     public static final DirectionProperty FACING = DirectionProperty.create("facing");
     public static final BooleanProperty POWERED = BooleanProperty.create("powered");
