@@ -33,7 +33,6 @@ import net.neoforged.neoforge.items.ItemHandlerHelper;
 import org.jetbrains.annotations.Nullable;
 import org.fuzi.redwork.block.ModBlockEntities;
 import org.fuzi.redwork.block.drill.DrillBlockEntity;
-import org.fuzi.redwork.block.filterchute.FilterChuteBlock;
 import org.fuzi.redwork.blockhelp.BlockHelpInfo;
 import org.fuzi.redwork.blockhelp.BlockHelpProvider;
 import org.fuzi.redwork.other.ModUtils;

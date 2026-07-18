@@ -20,7 +20,6 @@ import org.fuzi.redwork.block.breezecollector.BreezeCollectorBlock;
 import org.fuzi.redwork.block.chute.ChuteBlock;
 import org.fuzi.redwork.block.drill.DrillBlock;
 import org.fuzi.redwork.block.extractor.ExtractorBlock;
-import org.fuzi.redwork.block.filterchute.FilterChuteBlock;
 import org.fuzi.redwork.block.placer.PlacerBlock;
 import org.fuzi.redwork.item.ModItems;
 
@@ -42,9 +41,6 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> DRILL = registerBlock("drill",
             () -> new DrillBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.METAL).requiresCorrectToolForDrops().isRedstoneConductor(ModBlocks::neverConductor)));
-
-    public static final DeferredBlock<Block> FILTER_CHUTE = registerBlock("filter_chute",
-            () -> new FilterChuteBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.METAL).requiresCorrectToolForDrops().isRedstoneConductor(ModBlocks::neverConductor)));
 
     public static final DeferredBlock<Block> PLACER = registerBlock("placer",
             () -> new PlacerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.METAL).requiresCorrectToolForDrops().isRedstoneConductor(ModBlocks::neverConductor)));

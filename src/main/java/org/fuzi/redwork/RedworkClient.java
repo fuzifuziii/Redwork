@@ -12,7 +12,6 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import org.fuzi.redwork.block.ModBlockEntities;
-import org.fuzi.redwork.block.filterchute.FilterChuteBlockRenderer;
 
 @Mod(value = Redwork.MODID, dist = Dist.CLIENT)
 @EventBusSubscriber(modid = Redwork.MODID, value = Dist.CLIENT)
@@ -24,11 +23,5 @@ public class RedworkClient {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
 
-    }
-
-    @SubscribeEvent
-    static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer(ModBlockEntities.FILTER_CHUTE_BE.get(),
-                FilterChuteBlockRenderer::new);
     }
 }

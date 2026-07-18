@@ -40,7 +40,6 @@ public class ModOther {
                     .title(Component.translatable("itemGroup.redwork"))
                     .displayItems((idp, output) -> {
                         output.accept(ModBlocks.CHUTE);
-                        output.accept(ModBlocks.FILTER_CHUTE);
                         output.accept(ModBlocks.DRILL);
                         output.accept(ModBlocks.EXTRACTOR);
                         output.accept(ModBlocks.PLACER);

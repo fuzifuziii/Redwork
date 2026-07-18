@@ -116,8 +116,6 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
     // Sable Companion — не требует чтобы sable вообще был установлен на клиенте/сервере,
-    // отдаёт безопасные "no-op" реализации если sable не загружен, а рабочие — если загружен.
-    // Артефакт называется с суффиксом версии MC: sable-companion-common-1.21.1
     jarJar(api("dev.ryanhcode.sable-companion:sable-companion-common-${project.minecraft_version}:[${project.sable_companion_version},)")) {
         version {
             prefer(project.sable_companion_version)

@@ -24,8 +24,6 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import org.fuzi.redwork.block.ModBlocks;
-import org.fuzi.redwork.block.filterchute.FilterChuteBlock;
-import org.fuzi.redwork.block.filterchute.FilterChuteBlockEntity;
 import org.fuzi.redwork.blockhelp.BlockHelpInfo;
 import org.fuzi.redwork.blockhelp.BlockHelpProvider;
 
@@ -170,18 +168,6 @@ public class ChuteBlock extends Block implements BlockHelpProvider {
     static ChuteSeekResult getEnd(ServerLevel level, BlockPos pos) {
         var below = level.getBlockState(pos.below());
         if (below.is(ModBlocks.CHUTES)) {
-
-            if (level.getBlockEntity(pos.below()) instanceof FilterChuteBlockEntity be) {
-                var blackList = below.getValue(FilterChuteBlock.BLACKLIST);
-                var filter = be.getFilterItem();
-
-                var seek = getEnd(level, pos.below());
-                var filterObj = new ChuteFilter(filter, blackList);
-                seek.filter.add(filterObj);
-
-                return seek;
-            }
-
             return getEnd(level, pos.below());
         }
 
