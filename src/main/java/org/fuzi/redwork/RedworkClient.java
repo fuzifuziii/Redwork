@@ -19,7 +19,6 @@ import org.fuzi.redwork.block.filterchute.FilterChuteBlockRenderer;
 public class RedworkClient {
     public RedworkClient(ModContainer container) {
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
-        container.registerConfig(ModConfig.Type.CLIENT, ClientConfig.SPEC);
     }
 
     @SubscribeEvent

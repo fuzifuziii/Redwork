@@ -31,7 +31,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import org.jetbrains.annotations.Nullable;
-import org.fuzi.redwork.CommonConfig;
 import org.fuzi.redwork.block.ModBlockEntities;
 import org.fuzi.redwork.block.drill.DrillBlockEntity;
 import org.fuzi.redwork.block.filterchute.FilterChuteBlock;
@@ -118,7 +117,6 @@ public class PlacerBlock extends BaseEntityBlock implements BlockHelpProvider {
                     }
                 }
                 catch (Exception ex) {
-                    // Cowardly ignore
                 }
             }
 

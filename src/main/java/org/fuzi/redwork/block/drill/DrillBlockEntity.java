@@ -113,7 +113,6 @@ public class DrillBlockEntity extends BlockEntity {
                 return Mth.clamp(x, 0, 15);
             }
             catch (Exception ex) {
-                // Just in case
                 return 0;
             }
         }

@@ -32,6 +32,7 @@ public class ExtractorBlock extends Block implements BlockHelpProvider {
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos p_60513_, boolean p_60514_) {
         super.neighborChanged(state, level, pos, block, p_60513_, p_60514_);
+        level.scheduleTick(pos, asBlock(), 1);
     }
 
     @Override
@@ -45,7 +46,7 @@ public class ExtractorBlock extends Block implements BlockHelpProvider {
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.tick(state, level, pos, random);
 
-        if (!state.getValue(POWERED) && level.hasNeighborSignal(pos)) {
+        if (!state.getValue(POWERED) && org.fuzi.redwork.compat.sable.SableCompat.hasNeighborSignal(level, pos)) {
             var face = state.getValue(FACING);
             var backFace = state.getValue(FACING).getOpposite();
 

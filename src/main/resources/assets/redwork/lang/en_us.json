@@ -1,42 +1,9 @@
 {
-  "redwork.configuration.machinesWorkOnlyOnPulse": "[WIP] Machines work only on pulse redstone signal",
-
   "itemGroup.redwork": "Redwork",
   "block.redwork.chute": "Chute",
   "block.redwork.filter_chute": "Filter Chute",
   "block.redwork.drill": "Drill",
   "block.redwork.placer": "Placer",
   "block.redwork.breeze_collector": "Breeze Collector",
-  "block.redwork.extractor": "Extractor",
-
-  "blockhelp.direction.west": "West",
-  "blockhelp.direction.east": "East",
-  "blockhelp.direction.north": "North",
-  "blockhelp.direction.south": "South",
-  "blockhelp.direction.up": "Top",
-  "blockhelp.direction.down": "Bottom",
-  "blockhelp.direction.front": "Front",
-  "blockhelp.direction.back": "Back",
-  "blockhelp.multiblock": "Is a multiblock structure",
-  "blockhelp.storage": "Has storage",
-  "blockhelp.storage_required": "Storage required",
-  "blockhelp.no_storage": "Has NO storage",
-  "blockhelp.works_when_powered": "Works when powered",
-  "blockhelp.works_when_unpowered": "Works when unpowered",
-  "blockhelp.power_depends": "Work depends on signal strength",
-
-
-  "blockhelp.redwork.breeze_collector.front": "Collects items",
-
-  "blockhelp.redwork.chute.bottom": "Air/Storage",
-  
-  "blockhelp.redwork.drill.front": "Block to mine",
-  "blockhelp.redwork.drill.addition": "Right-click to put/extract item from drill",
-
-  "blockhelp.redwork.filterchute.top": "Storage/Other chute required",
-  "blockhelp.redwork.filterchute.bottom": "Air/Storage/Other chute",
-  "blockhelp.redwork.filterchute.addition1": "Right-click with item to change filter",
-  "blockhelp.redwork.filterchute.addition2": "Shift + Right-click to toggle blacklist",
-
-  "blockhelp.redwork.placer.front": "Place for blocks"
+  "block.redwork.extractor": "Extractor"
 }

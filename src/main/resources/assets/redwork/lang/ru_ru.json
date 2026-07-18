@@ -1,41 +1,9 @@
 {
-  "redwork.configuration.machinesWorkOnlyOnPulse": "[В разработке] Механизмы работают только от импульса редстоуна",
-
   "itemGroup.redwork": "Redwork",
   "block.redwork.chute": "Желоб",
   "block.redwork.filter_chute": "Умный желоб",
   "block.redwork.drill": "Бур",
   "block.redwork.placer": "Установщик",
-  "block.redwork.breeze_collector": "Сборщик бриза",
-  "block.redwork.extractor": "Экстрактор",
-
-  "blockhelp.direction.west": "Запад",
-  "blockhelp.direction.east": "Восток",
-  "blockhelp.direction.north": "Север",
-  "blockhelp.direction.south": "Юг",
-  "blockhelp.direction.up": "Сверху",
-  "blockhelp.direction.down": "Снизу",
-  "blockhelp.direction.front": "Спереди",
-  "blockhelp.direction.back": "Сзади",
-  "blockhelp.multiblock": "Является многоблочной структурой",
-  "blockhelp.storage": "Имеет хранилище",
-  "blockhelp.storage_required": "Требуется хранилище",
-  "blockhelp.no_storage": "Не имеет хранилища",
-  "blockhelp.works_when_powered": "Работает от сигнала",
-  "blockhelp.works_when_unpowered": "Работает без сигнала",
-  "blockhelp.power_depends": "Работа зависит от силы сигнала",
-
-  "blockhelp.redwork.breeze_collector.front": "Собирает предметы",
-
-  "blockhelp.redwork.chute.bottom": "Воздух или хранилище",
-
-  "blockhelp.redwork.drill.front": "Блок для добычи",
-  "blockhelp.redwork.drill.addition": "Используйте ПКМ, чтобы положить или достать инструмент из бура",
-
-  "blockhelp.redwork.filterchute.top": "Требуется хранилище или другой желоб",
-  "blockhelp.redwork.filterchute.bottom": "Воздух, хранилище или другой желоб",
-  "blockhelp.redwork.filterchute.addition1": "Используйте ПКМ с предметом в руке, чтобы настроить фильтр",
-  "blockhelp.redwork.filterchute.addition2": "Нажмите Shift + ПКМ, чтобы переключить чёрный список",
-
-  "blockhelp.redwork.placer.front": "Место для блоков"
+  "block.redwork.breeze_collector": "Сборщик вихря",
+  "block.redwork.extractor": "Извлекатель"
 }
