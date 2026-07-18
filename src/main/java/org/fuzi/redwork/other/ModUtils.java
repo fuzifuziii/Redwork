@@ -2,9 +2,11 @@ package org.fuzi.redwork.other;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.items.IItemHandler;
 
 public class ModUtils {
     public static boolean hasNeighborSignal(Level level, BlockPos pos) {
@@ -53,5 +55,14 @@ public class ModUtils {
 
     public static Vec3 blockPosVec(BlockPos a) {
         return new Vec3(a.getX(), a.getY(), a.getZ());
+    }
+
+    public static void dropItemHandlerContents(IItemHandler handler, Level level, BlockPos pos) {
+        for (int i = 0; i < handler.getSlots(); i++) {
+            var stack = handler.getStackInSlot(i);
+            if (!stack.isEmpty()) {
+                level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), stack));
+            }
+        }
     }
 }

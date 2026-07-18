@@ -13,9 +13,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -35,7 +33,6 @@ import org.fuzi.redwork.other.ModOther;
 import org.fuzi.redwork.other.ModUtils;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class DrillBlockEntity extends BlockEntity {
     public ItemStackHandler handler = new ItemStackHandler(9);
@@ -160,15 +157,15 @@ public class DrillBlockEntity extends BlockEntity {
 
 
         var face = state.getValue(DrillBlock.FACING);
-        AtomicBoolean anySignal = new AtomicBoolean(false);
+        boolean anySignal = false;
         for (var d : Direction.values()) {
             if (!d.equals(face.getOpposite()) && !d.equals(face) && level.hasSignal(ModUtils.lookTo(pos, d.getOpposite()), d)) {
-                anySignal.set(true);
+                anySignal = true;
                 break;
             }
         }
 
-        if (!anySignal.get()) {
+        if (!anySignal) {
             if (state.getValue(DrillBlock.POWERED)) {
                 level.setBlockAndUpdate(pos, state.setValue(DrillBlock.POWERED, false));
             }
@@ -261,8 +258,6 @@ public class DrillBlockEntity extends BlockEntity {
             level.destroyBlockProgress(-1, front, progress_l);
             this.setChanged();
         }
-
-        this.setChanged();
     }
 
     public @Nullable IItemHandler getCapability(@Nullable Direction direction) {

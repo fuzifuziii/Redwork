@@ -3,16 +3,11 @@ package org.fuzi.redwork.block.drill;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
-import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -34,6 +29,7 @@ import org.fuzi.redwork.block.ModBlockEntities;
 import org.fuzi.redwork.blockhelp.BlockHelpInfo;
 import org.fuzi.redwork.blockhelp.BlockHelpProvider;
 import org.fuzi.redwork.other.ModOther;
+import org.fuzi.redwork.other.ModUtils;
 
 public class DrillBlock extends BaseEntityBlock implements BlockHelpProvider {
     public static final MapCodec<DrillBlock> CODEC = simpleCodec(DrillBlock::new);
@@ -77,13 +73,7 @@ public class DrillBlock extends BaseEntityBlock implements BlockHelpProvider {
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (!level.isClientSide && !state.is(newState.getBlock()) && !movedByPiston) {
             if (level.getBlockEntity(pos) instanceof DrillBlockEntity be) {
-                for (int i = 0; i < be.handler.getSlots(); i++) {
-                    var stack = be.handler.getStackInSlot(i);
-                    if (!stack.isEmpty()) {
-                        var newItemEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), stack);
-                        level.addFreshEntity(newItemEntity);
-                    }
-                }
+                ModUtils.dropItemHandlerContents(be.handler, level, pos);
 
                 if (be.hasTool()) {
                     var toolEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), be.extractTool());

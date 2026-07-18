@@ -1,10 +1,7 @@
 package org.fuzi.redwork.blockhelp;
 
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import org.spongepowered.asm.mixin.Mutable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,33 +75,24 @@ public record BlockHelpInfo(List<Component> technical, List<Component> details) 
         }
 
         public Builder direction(String translation, Direction direction) {
+            return directional(direction.getName(), translation);
+        }
+
+        public Builder front(String translation) {
+            return directional("front", translation);
+        }
+
+        public Builder back(String translation) {
+            return directional("back", translation);
+        }
+
+        private Builder directional(String directionKey, String translation) {
             tech.add(Component.empty()
-                    .append(Component.translatable(String.format("blockhelp.direction.%s", direction.getName())).withColor(0x47ffd1)
+                    .append(Component.translatable(String.format("blockhelp.direction.%s", directionKey)).withColor(0x47ffd1)
                     .append(": ")
                     .append(
                     Component.translatable(translation).withColor(0xffa647))
 
-                    ));
-            return this;
-        }
-
-        public Builder front(String translation) {
-            tech.add(Component.empty()
-                    .append(Component.translatable("blockhelp.direction.front").withColor(0x47ffd1)
-                            .append(": ")
-                            .append(
-                                    Component.translatable(translation).withColor(0xffa647))
-
-                    ));
-            return this;
-        }
-
-        public Builder back(String translation) {
-            tech.add(Component.empty()
-                    .append(Component.translatable("blockhelp.direction.back").withColor(0x47ffd1)
-                            .append(": ")
-                            .append(
-                                    Component.translatable(translation).withColor(0xffa647))
                     ));
             return this;
         }

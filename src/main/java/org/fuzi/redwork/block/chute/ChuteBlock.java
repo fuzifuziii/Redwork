@@ -6,20 +6,14 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RedstoneLampBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
@@ -81,51 +75,42 @@ public class ChuteBlock extends Block implements BlockHelpProvider {
 
         var end = seek.pos;
 
-        if (end != null) {
-
-            var capBottom = seek.cap;
-
-            if (capBottom != null) {
-                for (int i = 0; i < capTop.getSlots(); i++) {
-                    var stack = capTop.getStackInSlot(i);
-
-                    if (!stack.isEmpty() && seek.test(stack)) {
-                        var simulatedExtract = capTop.extractItem(i, 4, true);
-                        if (simulatedExtract.isEmpty()) break;
-
-                        var simulatedRemaining = ItemHandlerHelper.insertItemStacked(capBottom, simulatedExtract, true);
-
-                        int canMove = simulatedExtract.getCount() - simulatedRemaining.getCount();
-                        if (canMove <= 0) break;
-
-                        var extracted = capTop.extractItem(i, canMove, false);
-                        ItemHandlerHelper.insertItemStacked(capBottom, extracted, false);
-                        break;
-                    }
-                }
-            }
-            else {
-                for (int i = 0; i < capTop.getSlots(); i++) {
-                    var stack = capTop.getStackInSlot(i);
-
-                    if (!stack.isEmpty() && seek.test(stack)) {
-                        var simulatedExtract = capTop.extractItem(i, 4, true);
-                        if (simulatedExtract.isEmpty()) break;
-
-                        var extracted = capTop.extractItem(i, simulatedExtract.getCount(), false);
-                        var itemEntity = new ItemEntity(
-                                level,
-                                end.getX() + 0.5,
-                                end.getY() + 0.5,
-                                end.getZ() + 0.5,
-                                extracted, 0, 0, 0);
-                        level.addFreshEntity(itemEntity);
-                        break;
-                    }
-                }
-            }
+        if (end == null) {
+            return;
         }
 
+        var capBottom = seek.cap;
+
+        for (int i = 0; i < capTop.getSlots(); i++) {
+            var stack = capTop.getStackInSlot(i);
+
+            if (stack.isEmpty() || !seek.test(stack)) {
+                continue;
+            }
+
+            var simulatedExtract = capTop.extractItem(i, 4, true);
+            if (simulatedExtract.isEmpty()) break;
+
+            if (capBottom != null) {
+                var simulatedRemaining = ItemHandlerHelper.insertItemStacked(capBottom, simulatedExtract, true);
+
+                int canMove = simulatedExtract.getCount() - simulatedRemaining.getCount();
+                if (canMove <= 0) break;
+
+                var extracted = capTop.extractItem(i, canMove, false);
+                ItemHandlerHelper.insertItemStacked(capBottom, extracted, false);
+            } else {
+                var extracted = capTop.extractItem(i, simulatedExtract.getCount(), false);
+                var itemEntity = new ItemEntity(
+                        level,
+                        end.getX() + 0.5,
+                        end.getY() + 0.5,
+                        end.getZ() + 0.5,
+                        extracted, 0, 0, 0);
+                level.addFreshEntity(itemEntity);
+            }
+            break;
+        }
     }
 
     @Override

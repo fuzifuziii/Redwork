@@ -1,25 +1,18 @@
 package org.fuzi.redwork.block.placer;
 
 import com.mojang.serialization.MapCodec;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -28,16 +21,11 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
 import org.jetbrains.annotations.Nullable;
 import org.fuzi.redwork.block.ModBlockEntities;
-import org.fuzi.redwork.block.drill.DrillBlockEntity;
 import org.fuzi.redwork.blockhelp.BlockHelpInfo;
 import org.fuzi.redwork.blockhelp.BlockHelpProvider;
 import org.fuzi.redwork.other.ModUtils;
-
-import java.util.List;
 
 public class PlacerBlock extends BaseEntityBlock implements BlockHelpProvider {
     public static final MapCodec<PlacerBlock> CODEC = simpleCodec(PlacerBlock::new);
@@ -57,13 +45,7 @@ public class PlacerBlock extends BaseEntityBlock implements BlockHelpProvider {
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (!level.isClientSide && !state.is(newState.getBlock()) && !movedByPiston) {
             if (level.getBlockEntity(pos) instanceof PlacerBlockEntity be) {
-                for (int i = 0; i < be.handler.getSlots(); i++) {
-                    var stack = be.handler.getStackInSlot(i);
-                    if (!stack.isEmpty()) {
-                        var newItemEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), stack);
-                        level.addFreshEntity(newItemEntity);
-                    }
-                }
+                ModUtils.dropItemHandlerContents(be.handler, level, pos);
             }
         }
 
