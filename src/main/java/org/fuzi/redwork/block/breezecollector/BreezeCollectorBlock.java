@@ -46,7 +46,7 @@ public class BreezeCollectorBlock extends Block implements BlockHelpProvider {
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.tick(state, level, pos, random);
 
-        boolean hasSignal = ModUtils.hasNeighborSignal(level, pos);
+        boolean hasSignal = ModUtils.hasNeighborSignal(level, pos, state.getValue(FACING));
         boolean isPowered = state.getValue(POWERED);
 
         if (hasSignal && !isPowered) {
@@ -63,7 +63,34 @@ public class BreezeCollectorBlock extends Block implements BlockHelpProvider {
         }
 
         runCollectorLogic(state, level, pos);
+        spawnServerParticles(state, level, pos, random);
         level.scheduleTick(pos, asBlock(), TICK_INTERVAL);
+    }
+
+    // Particles are normally spawned client-side via animateTick(), which is driven by
+    // the client's chunk-based random block sampling. Once this block becomes "physical"
+    // through Sable (part of a moving sub-level), it's no longer rendered as a regular
+    // chunk block, so animateTick() gets called far less often and the effect appears to
+    // lag. Forcing particles from our own server-side tick keeps the interval consistent
+    // regardless of whether the block is currently physical or not.
+    private void spawnServerParticles(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        Direction facing = state.getValue(FACING);
+        Vec3 front = Vec3.atCenterOf(pos)
+                .add(facing.getStepX(), facing.getStepY(), facing.getStepZ());
+
+        for (int i = 0; i < 2; i++) {
+            double spread = AABB_SIDE * 1.5;
+            double x = front.x + (random.nextDouble() - 0.5) * spread;
+            double y = front.y + (random.nextDouble() - 0.5) * spread;
+            double z = front.z + (random.nextDouble() - 0.5) * spread;
+
+            Vec3 particlePos = new Vec3(x, y, z);
+            Vec3 velocity = front.subtract(particlePos).normalize().scale(0.1);
+
+            level.sendParticles(ParticleTypes.CLOUD,
+                    particlePos.x, particlePos.y, particlePos.z,
+                    0, velocity.x, velocity.y, velocity.z, 1.0);
+        }
     }
 
     private void runCollectorLogic(BlockState state, ServerLevel level, BlockPos pos) {
@@ -175,29 +202,6 @@ public class BreezeCollectorBlock extends Block implements BlockHelpProvider {
         } catch (Exception ignored) {}
 
         return ItemStack.EMPTY;
-    }
-
-    @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (!state.getValue(POWERED)) return;
-
-        Direction facing = state.getValue(FACING);
-        Vec3 front = Vec3.atCenterOf(pos)
-                .add(facing.getStepX(), facing.getStepY(), facing.getStepZ());
-
-        for (int i = 0; i < 2; i++) { 
-            double spread = AABB_SIDE * 1.5;
-            double x = front.x + (random.nextDouble() - 0.5) * spread;
-            double y = front.y + (random.nextDouble() - 0.5) * spread;
-            double z = front.z + (random.nextDouble() - 0.5) * spread;
-
-            Vec3 particlePos = new Vec3(x, y, z);
-            Vec3 velocity = front.subtract(particlePos).normalize().scale(0.1);
-
-            level.addParticle(ParticleTypes.CLOUD,
-                    particlePos.x, particlePos.y, particlePos.z,
-                    velocity.x, velocity.y, velocity.z);
-        }
     }
 
     @Override
