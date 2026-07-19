@@ -8,6 +8,7 @@ import org.fuzi.redwork.Redwork;
 import org.fuzi.redwork.block.drill.DrillBlockEntity;
 import org.fuzi.redwork.block.placer.PlacerBlockEntity;
 import org.fuzi.redwork.block.copperobserver.CopperObserverBlockEntity;
+import org.fuzi.redwork.block.striker.StrikerBlockEntity;
 
 import java.util.function.Supplier;
 
@@ -28,6 +29,11 @@ public class ModBlockEntities {
     public static final Supplier<BlockEntityType<CopperObserverBlockEntity>> COPPER_OBSERVER_BE =
             BLOCK_ENTITIES.register("copper_observer_be", () -> BlockEntityType.Builder.of(
                     CopperObserverBlockEntity::new, ModBlocks.COPPER_OBSERVER.get()
+            ).build(null));
+
+    public static final Supplier<BlockEntityType<StrikerBlockEntity>> STRIKER_BE =
+            BLOCK_ENTITIES.register("striker_be", () -> BlockEntityType.Builder.of(
+                    StrikerBlockEntity::new, ModBlocks.STRIKER.get()
             ).build(null));
 
     public static void register(IEventBus bus) {

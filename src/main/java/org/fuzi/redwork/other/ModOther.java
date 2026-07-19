@@ -38,10 +38,12 @@ public class ModOther {
                         output.accept(ModBlocks.PLACER);
                         output.accept(ModBlocks.BREEZE_COLLECTOR);
                         output.accept(ModBlocks.COPPER_OBSERVER);
+                        output.accept(ModBlocks.STRIKER);
                     })
                     .build());
 
     public static final TagKey<Item> TOOL_TAG = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Redwork.MODID, "tools"));
+    public static final TagKey<Item> MELEE_TOOL_TAG = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Redwork.MODID, "melee_tools"));
 
     public static void register(IEventBus bus) {
         LOOT_MODIFIERS.register(bus);

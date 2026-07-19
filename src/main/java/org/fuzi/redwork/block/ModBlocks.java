@@ -22,6 +22,7 @@ import org.fuzi.redwork.block.drill.DrillBlock;
 import org.fuzi.redwork.block.extractor.ExtractorBlock;
 import org.fuzi.redwork.block.placer.PlacerBlock;
 import org.fuzi.redwork.block.copperobserver.CopperObserverBlock;
+import org.fuzi.redwork.block.striker.StrikerBlock;
 import org.fuzi.redwork.item.ModItems;
 
 import java.util.function.Supplier;
@@ -48,6 +49,9 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> COPPER_OBSERVER = registerBlock("copper_observer",
             () -> new CopperObserverBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK).sound(SoundType.METAL).requiresCorrectToolForDrops().isRedstoneConductor(ModBlocks::neverConductor)));
+
+    public static final DeferredBlock<Block> STRIKER = registerBlock("striker",
+            () -> new StrikerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.METAL).requiresCorrectToolForDrops().isRedstoneConductor(ModBlocks::neverConductor)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         return registerBlock(name, block, true);

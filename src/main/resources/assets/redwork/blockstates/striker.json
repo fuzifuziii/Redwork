@@ -1,0 +1,97 @@
+{
+  "variants": {
+    "facing=down,powered=false,has_tool=false": {
+      "model": "redwork:block/striker_still",
+      "x": 90
+    },
+    "facing=down,powered=true,has_tool=true": {
+      "model": "redwork:block/striker_work",
+      "x": 90
+    },
+    "facing=east,powered=false,has_tool=false": {
+      "model": "redwork:block/striker_still",
+      "y": 90
+    },
+    "facing=east,powered=true,has_tool=true": {
+      "model": "redwork:block/striker_work",
+      "y": 90
+    },
+    "facing=north,powered=false,has_tool=false": {
+      "model": "redwork:block/striker_still"
+    },
+    "facing=north,powered=true,has_tool=true": {
+      "model": "redwork:block/striker_work"
+    },
+    "facing=south,powered=false,has_tool=false": {
+      "model": "redwork:block/striker_still",
+      "y": 180
+    },
+    "facing=south,powered=true,has_tool=true": {
+      "model": "redwork:block/striker_work",
+      "y": 180
+    },
+    "facing=up,powered=false,has_tool=false": {
+      "model": "redwork:block/striker_still",
+      "x": 270
+    },
+    "facing=up,powered=true,has_tool=true": {
+      "model": "redwork:block/striker_work",
+      "x": 270
+    },
+    "facing=west,powered=false,has_tool=false": {
+      "model": "redwork:block/striker_still",
+      "y": 270
+    },
+    "facing=west,powered=true,has_tool=true": {
+      "model": "redwork:block/striker_work",
+      "y": 270
+    },
+
+    "facing=down,powered=false,has_tool=true": {
+      "model": "redwork:block/striker_still_wsword",
+      "x": 90
+    },
+    "facing=down,powered=true,has_tool=false": {
+      "model": "redwork:block/striker_work_nsword",
+      "x": 90
+    },
+    "facing=east,powered=false,has_tool=true": {
+      "model": "redwork:block/striker_still_wsword",
+      "y": 90
+    },
+    "facing=east,powered=true,has_tool=false": {
+      "model": "redwork:block/striker_work_nsword",
+      "y": 90
+    },
+    "facing=north,powered=false,has_tool=true": {
+      "model": "redwork:block/striker_still_wsword"
+    },
+    "facing=north,powered=true,has_tool=false": {
+      "model": "redwork:block/striker_work_nsword"
+    },
+    "facing=south,powered=false,has_tool=true": {
+      "model": "redwork:block/striker_still_wsword",
+      "y": 180
+    },
+    "facing=south,powered=true,has_tool=false": {
+      "model": "redwork:block/striker_work_nsword",
+      "y": 180
+    },
+    "facing=up,powered=false,has_tool=true": {
+      "model": "redwork:block/striker_still_wsword",
+      "x": 270
+    },
+    "facing=up,powered=true,has_tool=false": {
+      "model": "redwork:block/striker_work_nsword",
+      "x": 270
+    },
+    "facing=west,powered=false,has_tool=true": {
+      "model": "redwork:block/striker_still_wsword",
+      "y": 270
+    },
+    "facing=west,powered=true,has_tool=false": {
+      "model": "redwork:block/striker_work_nsword",
+      "y": 270
+    }
+  }
+}

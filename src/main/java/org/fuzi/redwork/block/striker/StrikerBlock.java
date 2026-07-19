@@ -1,4 +1,4 @@
-package org.fuzi.redwork.block.drill;
+package org.fuzi.redwork.block.striker;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
@@ -30,21 +30,20 @@ import org.fuzi.redwork.block.ModBlockEntities;
 import org.fuzi.redwork.blockhelp.BlockHelpInfo;
 import org.fuzi.redwork.blockhelp.BlockHelpProvider;
 import org.fuzi.redwork.other.ModOther;
-import org.fuzi.redwork.other.ModUtils;
 
-public class DrillBlock extends BaseEntityBlock implements BlockHelpProvider {
-    public static final MapCodec<DrillBlock> CODEC = simpleCodec(DrillBlock::new);
+public class StrikerBlock extends BaseEntityBlock implements BlockHelpProvider {
+    public static final MapCodec<StrikerBlock> CODEC = simpleCodec(StrikerBlock::new);
     public static final DirectionProperty FACING = DirectionProperty.create("facing");
     public static final BooleanProperty POWERED = BooleanProperty.create("powered");
     public static final BooleanProperty HAS_TOOL = BooleanProperty.create("has_tool");
 
-    public DrillBlock(Properties p_49224_) {
+    public StrikerBlock(Properties p_49224_) {
         super(p_49224_);
     }
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide ? null : createTickerHelper(blockEntityType, ModBlockEntities.DRILL_BE.get(), DrillBlockEntity::staticTick);
+        return level.isClientSide ? null : createTickerHelper(blockEntityType, ModBlockEntities.STRIKER_BE.get(), StrikerBlockEntity::staticTick);
     }
 
     @Override
@@ -54,12 +53,12 @@ public class DrillBlock extends BaseEntityBlock implements BlockHelpProvider {
 
     @Override
     public boolean canConnectRedstone(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        return false;  
+        return false;
     }
 
     @Override
     protected int getDirectSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        if (level.getBlockEntity(pos) instanceof DrillBlockEntity be && direction == state.getValue(FACING).getOpposite()) {
+        if (level.getBlockEntity(pos) instanceof StrikerBlockEntity be && direction == state.getValue(FACING).getOpposite()) {
             return be.getToolSignal();
         }
 
@@ -68,7 +67,7 @@ public class DrillBlock extends BaseEntityBlock implements BlockHelpProvider {
 
     @Override
     protected int getSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        if (level.getBlockEntity(pos) instanceof DrillBlockEntity be && direction == state.getValue(FACING)) {
+        if (level.getBlockEntity(pos) instanceof StrikerBlockEntity be && direction == state.getValue(FACING)) {
             return be.getToolSignal();
         }
 
@@ -78,14 +77,10 @@ public class DrillBlock extends BaseEntityBlock implements BlockHelpProvider {
     @Override
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (!level.isClientSide && !state.is(newState.getBlock()) && !movedByPiston) {
-            if (level.getBlockEntity(pos) instanceof DrillBlockEntity be) {
-                ModUtils.dropItemHandlerContents(be.handler, level, pos);
+            if (level.getBlockEntity(pos) instanceof StrikerBlockEntity be && be.hasTool()) {
+                var toolEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), be.extractTool());
 
-                if (be.hasTool()) {
-                    var toolEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), be.extractTool());
-
-                    level.addFreshEntity(toolEntity);
-                }
+                level.addFreshEntity(toolEntity);
             }
         }
 
@@ -95,7 +90,7 @@ public class DrillBlock extends BaseEntityBlock implements BlockHelpProvider {
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (!level.isClientSide) {
-            if (player.getMainHandItem().isEmpty() && level.getBlockEntity(pos) instanceof DrillBlockEntity be && be.hasTool()) {
+            if (player.getMainHandItem().isEmpty() && level.getBlockEntity(pos) instanceof StrikerBlockEntity be && be.hasTool()) {
                 ItemStack extractedTool = be.extractTool();
                 player.setItemSlot(EquipmentSlot.MAINHAND, extractedTool);
                 return InteractionResult.SUCCESS;
@@ -107,7 +102,7 @@ public class DrillBlock extends BaseEntityBlock implements BlockHelpProvider {
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (!level.isClientSide) {
-            if (stack.is(ModOther.TOOL_TAG) && level.getBlockEntity(pos) instanceof DrillBlockEntity be && !be.hasTool()) {
+            if (stack.is(ModOther.MELEE_TOOL_TAG) && level.getBlockEntity(pos) instanceof StrikerBlockEntity be && !be.hasTool()) {
                 if (be.putTool(stack)) {
                     stack.setCount(0);
                     return ItemInteractionResult.SUCCESS;
@@ -139,17 +134,17 @@ public class DrillBlock extends BaseEntityBlock implements BlockHelpProvider {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return ModBlockEntities.DRILL_BE.get().create(blockPos, blockState);
+        return ModBlockEntities.STRIKER_BE.get().create(blockPos, blockState);
     }
 
     @Override
     public BlockHelpInfo getHelp() {
         return BlockHelpInfo.builder()
-                .front("blockhelp.redwork.drill.front")
-                .details("blockhelp.redwork.drill.details")
-                .storage()
+                .front("blockhelp.redwork.striker.front")
+                .details("blockhelp.redwork.striker.details")
+                .no_storage()
                 .only_when_powered()
-                .other("blockhelp.redwork.drill.addition")
+                .other("blockhelp.redwork.striker.addition")
                 .build();
     }
 }
