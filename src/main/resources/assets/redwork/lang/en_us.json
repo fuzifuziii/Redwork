@@ -5,5 +5,45 @@
   "block.redwork.placer": "Placer",
   "block.redwork.breeze_collector": "Breeze Collector",
   "block.redwork.extractor": "Extractor",
-  "block.redwork.copper_observer": "Copper Observer"
+  "block.redwork.copper_observer": "Copper Observer",
+  "block.redwork.striker": "Striker",
+
+  "blockhelp.multiblock": "Part of a multiblock structure",
+  "blockhelp.storage": "Has internal storage that other blocks can pull from",
+  "blockhelp.no_storage": "Has no internal item storage",
+  "blockhelp.storage_required": "Needs an inventory here to work",
+  "blockhelp.power_depends": "Behavior depends on redstone signal",
+  "blockhelp.works_when_powered": "Only works while receiving a redstone signal",
+  "blockhelp.works_when_unpowered": "Only works while NOT receiving a redstone signal",
+
+  "blockhelp.direction.front": "Front",
+  "blockhelp.direction.back": "Back",
+  "blockhelp.direction.up": "Top",
+  "blockhelp.direction.down": "Bottom",
+  "blockhelp.direction.north": "North side",
+  "blockhelp.direction.south": "South side",
+  "blockhelp.direction.east": "East side",
+  "blockhelp.direction.west": "West side",
+
+  "blockhelp.redwork.drill.front": "Breaks the block it is facing",
+  "blockhelp.redwork.drill.details": "Right-click with a pickaxe, axe, shovel or hoe to insert it as the Drill's tool. While powered by redstone it repeatedly mines the block in front of it using that tool, collecting the drops into its own storage and damaging the tool over time. Outputs a redstone signal based on the tool's remaining durability.",
+  "blockhelp.redwork.drill.addition": "Requires a tool to mine blocks that need one",
+
+  "blockhelp.redwork.placer.front": "Places blocks into the space it is facing",
+  "blockhelp.redwork.placer.details": "Fill its storage with block items. While powered by redstone it attempts to place one block at a time into the space in front of it. If the space cannot be filled, the item is dropped instead.",
+
+  "blockhelp.redwork.chute.bottom": "Passes items down to whatever is below",
+  "blockhelp.redwork.chute.details": "Chutes stack vertically to form a shaft that moves items from the inventory above the top chute down to the inventory (or the ground) below the bottom chute. Powering any chute in the stack pauses the whole shaft.",
+
+  "blockhelp.redwork.extractor.details": "Moves items from the inventory behind it into the inventory in front of it, one stack at a time, whenever it receives a redstone signal.",
+
+  "blockhelp.redwork.breeze_collector.front": "Pulls in nearby items and drops",
+  "blockhelp.redwork.breeze_collector.details": "While powered by redstone, pulls nearby item entities and drops toward itself and feeds them into the inventory behind it.",
+
+  "blockhelp.redwork.copper_observer.front": "Detects entities in the space it is facing",
+  "blockhelp.redwork.copper_observer.details": "Emits a short redstone pulse out of its back whenever an entity enters or leaves the space it is facing.",
+
+  "blockhelp.redwork.striker.front": "Attacks whatever is standing in the space it is facing",
+  "blockhelp.redwork.striker.details": "Right-click with a sword or axe to mount it as the Striker's weapon. While powered by redstone it repeatedly swings the mounted weapon at any living entity in front of it, applying the weapon's damage and enchantments and wearing it down over time. Without a weapon mounted it still attacks bare-handed. Outputs a redstone signal based on the weapon's remaining durability.",
+  "blockhelp.redwork.striker.addition": "Works without a weapon, but hits much harder with one mounted"
 }

@@ -14,6 +14,7 @@ import org.fuzi.redwork.block.ModBlockEntities;
 import org.fuzi.redwork.block.ModBlocks;
 import org.fuzi.redwork.block.drill.DrillBlockEntity;
 import org.fuzi.redwork.block.placer.PlacerBlockEntity;
+import org.fuzi.redwork.block.striker.StrikerBlockEntity;
 import org.fuzi.redwork.item.ModItems;
 import org.fuzi.redwork.other.ModData;
 import org.fuzi.redwork.other.ModOther;
@@ -55,6 +56,12 @@ public class Redwork {
                 Capabilities.ItemHandler.BLOCK,
                 ModBlockEntities.PLACER_BE.get(),
                 PlacerBlockEntity::getCapability
+        );
+
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                ModBlockEntities.STRIKER_BE.get(),
+                StrikerBlockEntity::getCapability
         );
     }
 }
