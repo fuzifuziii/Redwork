@@ -1,14 +1,24 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "redstone",
   "pattern": [
-    "CCC",
-    "COC",
-    "CRC"
+    "CAA",
+    "BDA",
+    "CAA"
   ],
   "key": {
-    "C": { "item": "minecraft:copper_ingot" },
-    "O": { "item": "minecraft:observer" },
-    "R": { "item": "minecraft:redstone" }
+    "A": {
+      "item": "minecraft:copper_ingot"
+    },
+    "B": {
+      "item": "minecraft:observer"
+    },
+    "C": {
+      "item": "minecraft:redstone"
+    },
+    "D": {
+      "item": "minecraft:copper_block"
+    }
   },
   "result": {
     "id": "redwork:copper_observer",

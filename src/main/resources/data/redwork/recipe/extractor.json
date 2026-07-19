@@ -2,9 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "pattern": [
-    "AA",
-    "CB",
-    "AA"
+    "DAA",
+    "CBA",
+    "DAA"
   ],
   "key": {
     "A": {
@@ -15,6 +15,9 @@
     },
     "C": {
       "item": "minecraft:dropper"
+    },
+    "D": {
+      "item": "minecraft:redstone"
     }
   },
   "result": {
