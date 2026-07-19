@@ -52,6 +52,11 @@ public class DrillBlock extends BaseEntityBlock implements BlockHelpProvider {
     }
 
     @Override
+    public boolean canConnectRedstone(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+        return false;  
+    }
+
+    @Override
     protected int getDirectSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
         if (level.getBlockEntity(pos) instanceof DrillBlockEntity be && direction == state.getValue(FACING).getOpposite()) {
             return be.getToolSignal();

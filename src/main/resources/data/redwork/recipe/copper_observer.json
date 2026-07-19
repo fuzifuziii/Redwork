@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "COC",
+    "CRC"
+  ],
+  "key": {
+    "C": { "item": "minecraft:copper_ingot" },
+    "O": { "item": "minecraft:observer" },
+    "R": { "item": "minecraft:redstone" }
+  },
+  "result": {
+    "id": "redwork:copper_observer",
+    "count": 1
+  }
+}

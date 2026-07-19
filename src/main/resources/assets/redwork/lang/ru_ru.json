@@ -4,5 +4,6 @@
   "block.redwork.drill": "Бур",
   "block.redwork.placer": "Установщик",
   "block.redwork.breeze_collector": "Сборщик вихря",
-  "block.redwork.extractor": "Извлекатель"
+  "block.redwork.extractor": "Извлекатель",
+  "block.redwork.copper_observer": "Медный наблюдатель"
 }

@@ -4,5 +4,6 @@
   "block.redwork.drill": "Drill",
   "block.redwork.placer": "Placer",
   "block.redwork.breeze_collector": "Breeze Collector",
-  "block.redwork.extractor": "Extractor"
+  "block.redwork.extractor": "Extractor",
+  "block.redwork.copper_observer": "Copper Observer"
 }

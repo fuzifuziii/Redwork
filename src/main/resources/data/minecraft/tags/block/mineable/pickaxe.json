@@ -5,6 +5,7 @@
     "redwork:extractor",
     "redwork:placer",
     "redwork:breeze_collector",
-    "redwork:drill"
+    "redwork:drill",
+    "redwork:copper_observer"
   ]
 }

@@ -37,6 +37,7 @@ public class ModOther {
                         output.accept(ModBlocks.EXTRACTOR);
                         output.accept(ModBlocks.PLACER);
                         output.accept(ModBlocks.BREEZE_COLLECTOR);
+                        output.accept(ModBlocks.COPPER_OBSERVER);
                     })
                     .build());
 

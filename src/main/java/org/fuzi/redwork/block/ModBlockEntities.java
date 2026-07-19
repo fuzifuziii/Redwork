@@ -7,6 +7,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.fuzi.redwork.Redwork;
 import org.fuzi.redwork.block.drill.DrillBlockEntity;
 import org.fuzi.redwork.block.placer.PlacerBlockEntity;
+import org.fuzi.redwork.block.copperobserver.CopperObserverBlockEntity;
 
 import java.util.function.Supplier;
 
@@ -22,6 +23,11 @@ public class ModBlockEntities {
     public static final Supplier<BlockEntityType<PlacerBlockEntity>> PLACER_BE =
             BLOCK_ENTITIES.register("placer_be", () -> BlockEntityType.Builder.of(
                     PlacerBlockEntity::new, ModBlocks.PLACER.get()
+            ).build(null));
+
+    public static final Supplier<BlockEntityType<CopperObserverBlockEntity>> COPPER_OBSERVER_BE =
+            BLOCK_ENTITIES.register("copper_observer_be", () -> BlockEntityType.Builder.of(
+                    CopperObserverBlockEntity::new, ModBlocks.COPPER_OBSERVER.get()
             ).build(null));
 
     public static void register(IEventBus bus) {

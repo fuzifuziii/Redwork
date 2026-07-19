@@ -13,6 +13,10 @@
 * **Dependencies:** None
 * **Compatibility:** Sable
 
+### Links
+* [Modrinth](https://modrinth.com/mod/redwork)
+* [Curseforge](https://www.curseforge.com/minecraft/mc-mods/redwork)
+
 ---
 
 ### Credits & License

@@ -67,12 +67,6 @@ public class BreezeCollectorBlock extends Block implements BlockHelpProvider {
         level.scheduleTick(pos, asBlock(), TICK_INTERVAL);
     }
 
-    // Particles are normally spawned client-side via animateTick(), which is driven by
-    // the client's chunk-based random block sampling. Once this block becomes "physical"
-    // through Sable (part of a moving sub-level), it's no longer rendered as a regular
-    // chunk block, so animateTick() gets called far less often and the effect appears to
-    // lag. Forcing particles from our own server-side tick keeps the interval consistent
-    // regardless of whether the block is currently physical or not.
     private void spawnServerParticles(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         Direction facing = state.getValue(FACING);
         Vec3 front = Vec3.atCenterOf(pos)

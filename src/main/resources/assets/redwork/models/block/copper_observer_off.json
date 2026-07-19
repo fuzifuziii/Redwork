@@ -1,0 +1,24 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "bottom": "redwork:block/copper_observer/copper_observer_off",
+    "side": "redwork:block/copper_observer/copper_observer_off",
+    "top": "redwork:block/copper_observer/copper_observer_off",
+    "front": "redwork:block/copper_observer/copper_observer_front",
+    "back": "redwork:block/chute/chute_body_top",
+    "particle": "redwork:block/copper_observer/copper_observer_front"
+  },
+  "elements": [
+    {   "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down":  { "uv": [ 0, 0, 16, 16 ], "rotation": 270, "texture": "#side", "cullface": "down" },
+        "up":    { "uv": [ 0, 16, 16, 0 ], "rotation": 90, "texture": "#side", "cullface": "up" },
+        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#front", "cullface": "north" },
+        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#back", "cullface": "south" },
+        "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#side", "cullface": "west" },
+        "east":  { "uv": [ 0, 0, 16, 16 ], "rotation": 180, "texture": "#side", "cullface": "east" }
+      }
+    }
+  ]
+}
