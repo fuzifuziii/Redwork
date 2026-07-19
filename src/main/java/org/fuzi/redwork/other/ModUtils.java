@@ -10,14 +10,30 @@ import net.neoforged.neoforge.items.IItemHandler;
 
 public class ModUtils {
     public static boolean hasNeighborSignal(Level level, BlockPos pos) {
+        return hasNeighborSignal(level, pos, null);
+    }
+
+    public static boolean hasNeighborSignal(Level level, BlockPos pos, Direction exclude) {
         for (Direction dir : Direction.values()) {
+            if (dir == exclude) continue;
+
             BlockPos neighborPos = pos.relative(dir);
             BlockState neighborState = level.getBlockState(neighborPos);
             if (neighborState.isSignalSource() && neighborState.getSignal(level, neighborPos, dir.getOpposite()) > 0) {
                 return true;
             }
         }
-        return level.hasNeighborSignal(pos);
+
+        if (exclude == null) {
+            return level.hasNeighborSignal(pos);
+        }
+
+        for (Direction dir : Direction.values()) {
+            if (dir != exclude && level.getSignal(pos.relative(dir), dir) > 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static Vec3 direction2vec(Direction direction) {

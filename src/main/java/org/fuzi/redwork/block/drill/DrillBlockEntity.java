@@ -157,13 +157,7 @@ public class DrillBlockEntity extends BlockEntity {
 
 
         var face = state.getValue(DrillBlock.FACING);
-        boolean anySignal = false;
-        for (var d : Direction.values()) {
-            if (!d.equals(face.getOpposite()) && !d.equals(face) && level.hasSignal(ModUtils.lookTo(pos, d.getOpposite()), d)) {
-                anySignal = true;
-                break;
-            }
-        }
+        boolean anySignal = ModUtils.hasNeighborSignal(level, pos, face);
 
         if (!anySignal) {
             if (state.getValue(DrillBlock.POWERED)) {

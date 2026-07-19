@@ -60,10 +60,18 @@ public class PlacerBlock extends BaseEntityBlock implements BlockHelpProvider {
     }
 
     @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+        super.neighborChanged(state, level, pos, block, fromPos, isMoving);
+        if (!level.isClientSide) {
+            level.scheduleTick(pos, asBlock(), 1);
+        }
+    }
+
+    @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.tick(state, level, pos, random);
 
-        if (!state.getValue(POWERED) && level.hasNeighborSignal(pos) && level.getBlockEntity(pos) instanceof PlacerBlockEntity be) {
+        if (!state.getValue(POWERED) && ModUtils.hasNeighborSignal(level, pos, state.getValue(FACING)) && level.getBlockEntity(pos) instanceof PlacerBlockEntity be) {
             var face = state.getValue(FACING);
             var front = ModUtils.lookTo(pos, face);
             var blockInFront = level.getBlockState(front);
