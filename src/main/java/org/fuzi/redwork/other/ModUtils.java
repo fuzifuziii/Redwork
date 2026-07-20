@@ -58,17 +58,6 @@ public class ModUtils {
         };
     }
 
-    public static Vec3 vecPlusBlock(Vec3 a, BlockPos b) {
-        return a.add(b.getX(), b.getY(), b.getZ());
-    }
-
-    public static Vec3 vecMultiply(Vec3 a, double b) {
-        return new Vec3(a.x * b, a.y * b, a.z * b);
-    }
-    public static Vec3 vecDivide(Vec3 a, double b) {
-        return new Vec3(a.x / b, a.y / b, a.z / b);
-    }
-
     public static Vec3 blockPosVec(BlockPos a) {
         return new Vec3(a.getX(), a.getY(), a.getZ());
     }
