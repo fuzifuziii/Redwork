@@ -22,6 +22,7 @@ import org.fuzi.redwork.block.drill.DrillBlock;
 import org.fuzi.redwork.block.extractor.ExtractorBlock;
 import org.fuzi.redwork.block.placer.PlacerBlock;
 import org.fuzi.redwork.block.copperobserver.CopperObserverBlock;
+import org.fuzi.redwork.block.geodeaccelerator.GeodeAcceleratorBlock;
 import org.fuzi.redwork.block.striker.StrikerBlock;
 import org.fuzi.redwork.item.ModItems;
 
@@ -52,6 +53,9 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> STRIKER = registerBlock("striker",
             () -> new StrikerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.METAL).requiresCorrectToolForDrops().isRedstoneConductor(ModBlocks::neverConductor)));
+
+    public static final DeferredBlock<Block> GEODE_ACCELERATOR = registerBlock("geode_accelerator",
+            () -> new GeodeAcceleratorBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).sound(SoundType.METAL).requiresCorrectToolForDrops().isRedstoneConductor(ModBlocks::neverConductor)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         return registerBlock(name, block, true);

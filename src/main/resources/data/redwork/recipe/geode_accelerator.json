@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "DAE",
+    "CBE",
+    "DAE"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:copper_ingot"
+    },
+    "B": {
+      "item": "minecraft:copper_block"
+    },
+    "C": {
+      "item": "minecraft:dropper"
+    },
+    "D": {
+      "item": "minecraft:redstone"
+    },
+    "E": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "result": {
+    "id": "redwork:geode_accelerator",
+    "count": 1
+  }
+}

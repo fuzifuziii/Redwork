@@ -7,6 +7,7 @@
   "block.redwork.extractor": "Extractor",
   "block.redwork.copper_observer": "Copper Observer",
   "block.redwork.striker": "Striker",
+  "block.redwork.geode_accelerator": "Geode Accelerator",
 
   "blockhelp.multiblock": "Part of a multiblock structure",
   "blockhelp.storage": "Has internal storage that other blocks can pull from",
@@ -45,5 +46,8 @@
 
   "blockhelp.redwork.striker.front": "Attacks whatever is standing in the space it is facing",
   "blockhelp.redwork.striker.details": "Right-click with a sword or axe to mount it as the Striker's weapon. While powered by redstone it repeatedly swings the mounted weapon at any living entity in front of it, applying the weapon's damage and enchantments and wearing it down over time. Without a weapon mounted it still attacks bare-handed. Outputs a redstone signal based on the weapon's remaining durability.",
-  "blockhelp.redwork.striker.addition": "Works without a weapon, but hits much harder with one mounted"
+  "blockhelp.redwork.striker.addition": "Works without a weapon, but hits much harder with one mounted",
+
+  "blockhelp.redwork.geode_accelerator.front": "Speeds up growth of the block it is facing",
+  "blockhelp.redwork.geode_accelerator.details": "Constantly forces extra random ticks on the block in front of it, speeding up its growth (e.g. budding amethyst). The list of eligible blocks is configurable in the mod's config."
 }
