@@ -11,6 +11,7 @@
 * **Chute** — A vertical item pipe. Stack Chutes on top of each other to form a shaft that carries items from the inventory at the top down to the inventory (or the floor) at the bottom. Powering any Chute in the stack pauses the whole column.
 * **Breeze Collector** — While powered, it pulls in nearby dropped items (and certain entities/drops, with Sable/sub-level support) toward itself and feeds them into the inventory behind it — a redstone-controlled vacuum.
 * **Copper Observer** — A directional entity sensor. It emits a short redstone pulse whenever something enters or leaves the space it's facing, similar in spirit to a vanilla Observer but for entities instead of blocks.
+* **Geode Accelerator** — Faces a direction and, while powered by redstone, forces extra random ticks on the block directly in front of it, dramatically speeding up growth. Works on budding amethyst out of the box; the list of target blocks is configurable in the mod's config file, so you can add any other randomly-ticking block you want to accelerate. Does not accept a signal from the front face.
 
 ### Features
 * **Advanced Automation:** Streamline your resource processing, defense and item management with compact technical blocks.
@@ -42,6 +43,7 @@ Redwork is open-source under the **MIT License**, and heavily based on and inspi
 * **Желоб (Chute)** — Вертикальная труба для предметов. Ставьте желоба друг на друга — получится шахта, которая переносит предметы из инвентаря наверху в инвентарь (или просто на землю) внизу. Подача сигнала на любой желоб в шахте останавливает всю колонну.
 * **Сборщик вихря (Breeze Collector)** — Пока подан сигнал, притягивает к себе ближайшие выпавшие предметы (и некоторые сущности/дропы, с поддержкой саб-уровней Sable) и отправляет их в инвентарь позади себя — редстоун-управляемый пылесос.
 * **Медный наблюдатель (Copper Observer)** — Направленный датчик существ. Выдаёт короткий импульс редстоуна каждый раз, когда кто-то входит в пространство перед ним или покидает его — как ванильный Наблюдатель, только реагирует на существ, а не на блоки.
+* **Ускоритель жеод (Geode Accelerator)** — Смотрит в выбранную сторону и, пока подаётся сигнал редстоуна, принудительно форсирует случайные тики блока прямо перед собой, значительно ускоряя его рост. По умолчанию работает с цветущим аметистом; список целевых блоков настраивается в конфиге мода — можно добавить любой случайно-тикающий блок. Не принимает сигнал с передней грани.
 
 ### Особенности
 * **Продвинутая автоматика:** обработка ресурсов, защита и логистика предметов без лишних построек.
