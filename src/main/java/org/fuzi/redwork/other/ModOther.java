@@ -39,6 +39,7 @@ public class ModOther {
                         output.accept(ModBlocks.BREEZE_COLLECTOR);
                         output.accept(ModBlocks.COPPER_OBSERVER);
                         output.accept(ModBlocks.STRIKER);
+                        output.accept(ModBlocks.GEODE_ACCELERATOR);
                     })
                     .build());
 

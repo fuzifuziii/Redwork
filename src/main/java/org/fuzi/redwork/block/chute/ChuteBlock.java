@@ -2,12 +2,10 @@ package org.fuzi.redwork.block.chute;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -22,7 +20,6 @@ import org.fuzi.redwork.blockhelp.BlockHelpInfo;
 import org.fuzi.redwork.blockhelp.BlockHelpProvider;
 
 import javax.annotation.Nullable;
-import java.util.List;
 
 public class ChuteBlock extends Block implements BlockHelpProvider {
     public static final BooleanProperty UPPER = BooleanProperty.create("upper");
@@ -73,18 +70,18 @@ public class ChuteBlock extends Block implements BlockHelpProvider {
 
         var seek = getEnd(level, seekPos);
 
-        var end = seek.pos;
+        var end = seek.pos();
 
         if (end == null) {
             return;
         }
 
-        var capBottom = seek.cap;
+        var capBottom = seek.cap();
 
         for (int i = 0; i < capTop.getSlots(); i++) {
             var stack = capTop.getStackInSlot(i);
 
-            if (stack.isEmpty() || !seek.test(stack)) {
+            if (stack.isEmpty()) {
                 continue;
             }
 
@@ -157,16 +154,16 @@ public class ChuteBlock extends Block implements BlockHelpProvider {
         }
 
         if (below.is(BlockTags.AIR)) {
-            return new ChuteSeekResult(NonNullList.create(), pos.below(), null);
+            return new ChuteSeekResult(pos.below(), null);
         }
 
         var cap = level.getCapability(Capabilities.ItemHandler.BLOCK, pos.below(), Direction.UP);
 
         if (cap != null) {
-            return new ChuteSeekResult(NonNullList.create(), pos.below(), cap);
+            return new ChuteSeekResult(pos.below(), cap);
         }
 
-        return new ChuteSeekResult(NonNullList.create(), null, null);
+        return new ChuteSeekResult(null, null);
     }
 
     @Override
@@ -182,34 +179,6 @@ public class ChuteBlock extends Block implements BlockHelpProvider {
     }
 
 
-    record ChuteFilter(ItemStack filter, boolean blacklist) {
-
-    }
-
-    record ChuteSeekResult(List<ChuteFilter> filter, @Nullable BlockPos pos, @Nullable IItemHandler cap) {
-        public boolean test(ItemStack other) {
-            for (var test : filter) {
-                if (test.filter.isEmpty() && test.blacklist) {
-                    return false;
-                }
-
-                if (test.filter.isEmpty()) {
-                    continue;
-                }
-
-                if (other.is(test.filter.getItem())) {
-                    if (test.blacklist) {
-                        return false;
-                    }
-                }
-                else {
-                    if (!test.blacklist) {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
-        }
+    record ChuteSeekResult(@Nullable BlockPos pos, @Nullable IItemHandler cap) {
     }
 }

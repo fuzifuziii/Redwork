@@ -6,6 +6,7 @@
     "redwork:placer",
     "redwork:breeze_collector",
     "redwork:drill",
-    "redwork:copper_observer"
+    "redwork:copper_observer",
+    "redwork:geode_accelerator"
   ]
 }

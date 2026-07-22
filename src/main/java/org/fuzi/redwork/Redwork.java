@@ -16,8 +16,10 @@ import org.fuzi.redwork.block.drill.DrillBlockEntity;
 import org.fuzi.redwork.block.placer.PlacerBlockEntity;
 import org.fuzi.redwork.block.striker.StrikerBlockEntity;
 import org.fuzi.redwork.item.ModItems;
+import org.fuzi.redwork.other.Config;
 import org.fuzi.redwork.other.ModData;
 import org.fuzi.redwork.other.ModOther;
+import net.neoforged.fml.config.ModConfig;
 import org.slf4j.Logger;
 
 @Mod(Redwork.MODID)
@@ -32,6 +34,8 @@ public class Redwork {
         ModBlockEntities.register(modEventBus);
         ModItems.register(modEventBus);
         ModOther.register(modEventBus);
+
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
         modEventBus.addListener(this::registerCapabilityProvider);
 

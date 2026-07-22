@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 public class CopperObserverBlockEntity extends BlockEntity {
     private static final int PULSE_LENGTH = 2;
     private static final int SCAN_INTERVAL = 4;
-    private static final double SCAN_RADIUS = 0.6;
+    private static final double SCAN_RADIUS = 0.5;
     
     private static final int PULSE_COOLDOWN = 8; 
 

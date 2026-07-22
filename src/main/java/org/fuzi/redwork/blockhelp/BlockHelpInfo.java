@@ -54,11 +54,6 @@ public record BlockHelpInfo(List<Component> technical, List<Component> details) 
             return back("blockhelp.storage_required");
         }
 
-        public Builder power_depends_on_signal() {
-            tech.add(Component.translatable("blockhelp.power_depends").withColor(0xb3b3b3));
-            return this;
-        }
-
         public Builder only_when_unpowered() {
             tech.add(Component.translatable("blockhelp.works_when_unpowered").withColor(0xb3b3b3));
             return this;
